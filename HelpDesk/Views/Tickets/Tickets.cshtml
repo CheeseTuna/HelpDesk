@@ -1,0 +1,31 @@
+﻿@using HelpDesk.Models.ViewModels.Tickets
+@model List<TicketsViewModel>
+
+<div>
+    <h1>All Tickets</h1>
+    <p>View and manage all support tickets.</p>
+    <a asp-controller="Tickets" asp-action="CreateTicket">+ Create Ticket</a>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Priority</th>
+            <th>Created</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ticket in Model)
+        {
+            <tr>
+                <td>@ticket.TicketId</td>
+                <td>@ticket.Title</td>
+                <td>@ticket.CategoryId</td>
+                <td>@ticket.PriorityId</td>
+                <td>@ticket.Created</td>
+            </tr>
+        }
+    </tbody>
+</table>

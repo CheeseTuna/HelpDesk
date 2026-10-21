@@ -1,0 +1,49 @@
+﻿@using HelpDesk.Models.ViewModels.Tickets
+@model CreateTicketViewModel
+
+<div>
+    <h1>Create New Ticket</h1>
+    <p>Tell us about your issue and we'll get it resolved</p>
+
+
+<form asp-action="CreateTicket" method="post">
+    <div>
+        <div>
+            <label>Title</label>
+            <input asp-for="Title" type="text"/>
+        </div>
+        <div class="mb-3">
+                <label asp-for="CategoryId">Category</label>
+                <select asp-for="CategoryId" class="form-select">
+                    <option value="">--Select Category--</option>
+                    @foreach (var priority in Model.Categories)
+                    {
+                        <option value="@priority.CategoryId">
+                            @priority.CategoryLabel
+                        </option>
+                    }
+                </select>
+        </div>
+        <div>
+            <label asp-for="PriorityId">Priority</label>
+            <select asp-for="PriorityId" class="form-select">
+                <option value="">--Select Priority--</option>
+                @foreach (var priority in Model.Priorities)
+                {
+                    <option value="@priority.PriorityId">
+                        @priority.PriorityLabel
+                    </option>
+                }
+            </select>
+        </div>
+        <div>
+            <label>Description</label>
+            <input asp-for="Description" type="text"/>
+        </div>
+    </div>
+    <div>
+        <button type="submit">
+            Submit Ticket
+        </button>
+    </div>
+</form>
